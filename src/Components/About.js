@@ -1,27 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
-    const [myStyle, setMyStyle] = useState({
-        color: 'black',
-        backgroundColor: 'white'
-    })
-    const [btnText, setBtnText] = useState("Enable Dark Mode")
-    const toggleColor = ()=> {
-        if(myStyle.color === 'white'){
-            setMyStyle({
-                color: 'black',
-                backgroundColor: 'white'
-            })
-            setBtnText("Enable Dark Mode")
-        }
-        else{
-            setMyStyle({
-                color: 'white',
-                backgroundColor: 'black'
-            })
-            setBtnText("Enable Light Mode")
+export default function About(props) {
+    // const [myStyle, setMyStyle] = useState({
+    //     color: 'black',
+    //     backgroundColor: 'white'
+    // })
+    // const [btnText, setBtnText] = useState("Enable Dark Mode")
+    // const toggleColor = ()=> {
+    //     if(myStyle.color === 'white'){
+    //         setMyStyle({
+    //             color: 'black',
+    //             backgroundColor: 'white'
+    //         })
+    //         setBtnText("Enable Dark Mode")
+    //     }
+    //     else{
+    //         setMyStyle({
+    //             color: 'white',
+    //             backgroundColor: 'black'
+    //         })
+    //         setBtnText("Enable Light Mode")
            
-        }
+    //     }
+    // }
+    let myStyle = {
+        color: props.mode === 'light'? 'black': 'white',
+        backgroundColor: props.mode === 'light'? 'white': '#031a23'
     }
 
 
@@ -39,11 +43,12 @@ export default function About() {
                             </button>
                         </h2>
                         <div id="collapseOne" className="accordion-collapse collapse show" style = {myStyle} aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
+                            <div className="accordion-body" style={myStyle}>
                                 <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                             </div>
                         </div>
                     </div>
+
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingTwo">
                             <button className="accordion-button collapsed" style = {myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -69,7 +74,7 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-                <button type="button" onClick={toggleColor} className="btn btn-primary my-3">{btnText}</button>
+                {/* <button type="button" onClick={toggleColor} className="btn btn-primary my-3">{btnText}</button> */}
 
             </div>
         </>
